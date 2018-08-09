@@ -1,0 +1,14 @@
+{
+  "name": "check-cert",
+  "version": "1.0.1",
+  "main": "index.js",
+  "bin": {
+    "check-cert": "index.js"
+  },
+  "scripts": {
+    "postversion": "npm_config_registry=https://registry.npmjs.org/ npm publish"
+  },
+  "author": "Brook Yang",
+  "license": "MIT",
+  "description": ""
+}
