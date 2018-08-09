@@ -1,5 +1,5 @@
 {
-  "name": "check-cert",
+  "name": "check-cert-server",
   "version": "1.0.1",
   "main": "index.js",
   "bin": {
