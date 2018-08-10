@@ -1,6 +1,6 @@
 {
-  "name": "check-cert-server",
-  "version": "1.0.2",
+  "name": "check-cert",
+  "version": "1.0.6",
   "main": "index.js",
   "bin": {
     "check-cert": "index.js"
@@ -10,5 +10,19 @@
   },
   "author": "Brook Yang",
   "license": "MIT",
-  "description": ""
+  "description": "Check https certificate valid and notify",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yangg/check-cert.git"
+  },
+  "keywords": [
+    "https",
+    "certificate",
+    "check",
+    "server"
+  ],
+  "bugs": {
+    "url": "https://github.com/yangg/check-cert/issues"
+  },
+  "homepage": "https://github.com/yangg/check-cert#readme"
 }
