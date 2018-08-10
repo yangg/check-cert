@@ -17,5 +17,5 @@ check-cert <host> <token> [days]
 
 配置 crontab -e 每天凌晨3点检查
 ```cron
-0 3 * * * PATH=/ur/home/.nvm/versions/node/v8.9.1/bin:$PATH check-cert uedsky.com  <SCUtoken> > /tmp/check-cert.log
+0 3 * * * PATH=/ur/home/.nvm/versions/node/v8.9.1/bin:$PATH check-cert uedsky.com  <SCUtoken> >> /tmp/check-cert.log
 ```

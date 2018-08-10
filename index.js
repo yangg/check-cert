@@ -19,7 +19,9 @@ function check(args) {
   const [HOST, token, days = 20] = args
   const VALID_DAYS = days * DAY_SECS + Date.now()
   if(!(HOST && token)) {
-    return console.error('缺少参数！')
+    const readme = require('fs').readFileSync(__dirname + '/README.md').toString()
+    console.error(readme.substr(readme.indexOf('# Usage')))
+    process.exit(1)
   }
   NOTIFY_URL = token.startsWith('SCU') ? `https://sc.ftqq.com/${token}.send`
   : `https://pushbear.ftqq.com/sub?sendkey=${token}`

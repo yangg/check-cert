@@ -6,7 +6,7 @@
     "check-cert": "index.js"
   },
   "scripts": {
-    "postversion": "npm_config_registry=https://registry.npmjs.org/ npm publish"
+    "postversion": "git push && npm_config_registry=https://registry.npmjs.org/ npm publish"
   },
   "author": "Brook Yang",
   "license": "MIT",
