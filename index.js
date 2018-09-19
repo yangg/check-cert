@@ -33,13 +33,13 @@ function check(args) {
     method: 'HEAD',
     checkServerIdentity: function(host, cert) {
       const valid_to = new Date(cert.valid_to)
-      let MSG = `[${new Date().toISOString()}]Checking ${HOST}: `
+      let MSG = `[${new Date().toISOString()}] Checking ${HOST}: `
+      const leftDays = (valid_to - Date.now())/DAY_SECS | 0
       if(VALID_DAYS - valid_to > 0) {
-        const leftDays = (valid_to - Date.now())/DAY_SECS | 0
         notify(`你的${HOST}证书${leftDays}天后将过期！`)
         MSG += `${leftDays}天后将过期！`
       } else {
-        MSG += 'OK'
+        MSG += `expires after ${leftDays} days, OK`
       }
       console.log(MSG)
     },
@@ -56,3 +56,4 @@ function check(args) {
 
 check(process.argv.slice(2))
  
+// vim: ft=javascript
