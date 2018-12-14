@@ -25,7 +25,7 @@ check-cert <host> <token> [days]
 [days] 临近多少天后发送提醒，默认 20
 ```
 
-配置 crontab -e 每天凌晨3点检查
-```cron
+示例：配置 crontab -e 每天凌晨3点检查
+```bash
 0 3 * * * PATH=/ur/home/.nvm/versions/node/v8.9.1/bin:$PATH check-cert uedsky.com  <SCUtoken> >> /tmp/check-cert.log
 ```

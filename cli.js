@@ -18,7 +18,7 @@ function check(args) {
   const [HOST, token, days = 20] = args
   if(!(HOST && token)) {
     const readme = require('fs').readFileSync(__dirname + '/README.md').toString()
-    console.error(readme.substr(readme.indexOf('# Usage')))
+    console.error(readme.substr(readme.indexOf('# Cli Usage')))
     process.exit(1)
   }
   NOTIFY_URL = token.startsWith('SCU') ? `https://sc.ftqq.com/${token}.send`
