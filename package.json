@@ -3,7 +3,7 @@
   "version": "1.0.9",
   "main": "index.js",
   "bin": {
-    "check-cert": "index.js"
+    "check-cert": "cli.js"
   },
   "scripts": {
     "postversion": "git push && npm_config_registry=https://registry.npmjs.org/ npm publish"

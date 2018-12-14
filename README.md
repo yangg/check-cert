@@ -1,12 +1,22 @@
 # check-cert
-检查 https 证书是否临近过期时间，并通过 [Server酱](http://sc.ftqq.com/) 通知
+检查 https 证书是否临近过期时间，可以 js 调用或者 cli 通过 [Server酱](http://sc.ftqq.com/) 通知
 
 ## Installation
 ```bash
-npm i -g check-cert
+npm i -g check-cert # cli 建议 -g
 ```
 
 ## Usage
+```
+async function main() {
+  const checkCert = require('./')
+  const leftDays = await checkCert('uedsky.com')
+  console.log(leftDays)
+}
+main()
+```
+
+## Cli Usage
 ```
 check-cert <host> <token> [days]
 
