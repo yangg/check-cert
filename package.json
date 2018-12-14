@@ -1,6 +1,6 @@
 {
   "name": "check-cert",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "main": "index.js",
   "bin": {
     "check-cert": "cli.js"
