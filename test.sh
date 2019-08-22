@@ -1,1 +1,0 @@
-./cli.sh api.pocketchess.cn --days 60 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=4749588a-bec9-40f6-b0d1-10aa57c88037' -H 'Content-Type: application/json' -d '{"msgtype":"markdown","markdown":{"content":"请注意，$CHECK_CERT_HOST 的 HTTPS 证书将于 <font color=\"warning\">$CHECK_CERT_DAYS</font> 天后过期！"}}'
