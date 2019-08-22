@@ -2,13 +2,11 @@
 
 
 HOST="$1"
-shift
-
 if [ -z "$HOST" ];then
     cat README.md | sed -n '/Cli Usage/,//p'
     exit 1
 fi
-
+shift
 DAYS=15
 if [ "$1" = "--days" ]; then
     DAYS="$2"
@@ -16,7 +14,8 @@ if [ "$1" = "--days" ]; then
 fi
 set -eu
 
-leftDays="$(./index-cli.js $HOST)"
+scriptDir="$(dirname "$(test -L "$0" && readlink -nf "$0" || echo "$0")")"
+leftDays="$("$scriptDir/index-cli.js" $HOST)"
 
 # echo "HOST:$HOST"
 # echo "DAYS:$DAYS"
