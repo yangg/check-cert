@@ -1,5 +1,5 @@
 
-async function main() {
+async function main () {
   const checkCert = require('./')
   const leftDays = await checkCert('uedsky.com')
   console.log(leftDays)

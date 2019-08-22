@@ -1,19 +1,38 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
-if [ -z "$1" ];then
+
+HOST="$1"
+shift
+
+if [ -z "$HOST" ];then
     cat README.md | sed -n '/Cli Usage/,//p'
     exit 1
 fi
 
-HOST="$1"
-DAYS="$2"
-DAYS="${DAYS:=15}"
-
-leftDays="$(check-cert $HOST)"
-echo "[$(date +"%Y-%m-%dT%H:%M:%S%z")] Checking uedsky.com: Expires in $leftDays days"
-CHECK_CERT_DAYS="$leftDays"
-CHECK_CERT_HOST="$HOST"
-if [[ "$leftDays" -lt "$DAYS" ]]; then
-    echo 'less'
-    false
+DAYS=15
+if [ "$1" = "--days" ]; then
+    DAYS="$2"
+    shift 2
 fi
+set -eu
+
+leftDays="$(./index-cli.js $HOST)"
+
+# echo "HOST:$HOST"
+# echo "DAYS:$DAYS"
+# echo "curlOpts:$@"
+msg="[$(date +"%Y-%m-%dT%H:%M:%S%z")] Checking uedsky.com: Expires in $leftDays days"
+if [[ "$leftDays" -lt "$DAYS" ]]; then
+    if [[ $# -gt 0 ]]; then
+        curlOpts=()
+        for arg in "$@"; do
+            arg="${arg/\$CHECK_CERT_HOST/$HOST}"
+            arg="${arg/\$CHECK_CERT_DAYS/$leftDays}"
+            curlOpts+=($arg)
+        done
+        echo -e "\n[$(date +"%Y-%m-%dT%H:%M:%S%z")] ${curlOpts[@]}" >> /tmp/check-cert-request.log
+        curl -sq "${curlOpts[@]}" >> /tmp/check-cert-request.log 2>&1
+        msg="$msg [notified]"
+    fi
+fi
+echo $msg
