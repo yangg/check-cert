@@ -28,5 +28,7 @@ check-cert <host> [--days 15] [...curlOpts]
 示例：配置 crontab -e 每天凌晨3点检查
 ```bash
 # 企业微信通知
-0 3 * * * PATH=/ur/home/.nvm/versions/node/v8.9.1/bin:$PATH check-cert uedsky.com 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=xxxx' -H 'Content-Type: application/json' -d '{"msgtype":"markdown","markdown":{"content":"请注意，$CHECK_CERT_HOST 的 HTTPS 证书将于 <font color=\"warning\">$CHECK_CERT_DAYS</font> 天后过期！"}}' >> /tmp/check-cert.log
+0 9 * * * PATH=/ur/home/.nvm/versions/node/v8.9.1/bin:$PATH check-cert uedsky.com 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=<key>' -H 'Content-Type: application/json' -d '{"msgtype":"markdown","markdown":{"content":"请注意，$CHECK_CERT_HOST 的 HTTPS 证书将于 <font color=\"warning\">$CHECK_CERT_DAYS</font> 天后过期！"}}' >> /tmp/check-cert.log 2>&1
+# telegram 通知
+0 9 * * * PATH=/home/wgdahu/.nvm/versions/node/v10.14.1/bin:$PATH check-cert api.pocketchess.cn --days 90 'https://api.telegram.org/bot<token>/sendMessage?chat_id=xxx&parse_mode=Markdown' -d 'text=请注意, $CHECK_CERT_HOST 的 HTTPS 证书将于 *$CHECK_CERT_DAYS* 天后过期！' --socks5 sdb2:5678 >> /tmp/check-cert.log 2>&1
 ```

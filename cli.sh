@@ -14,7 +14,7 @@ if [ "$1" = "--days" ]; then
 fi
 set -eu
 
-scriptDir="$(dirname "$(test -L "$0" && readlink -nf "$0" || echo "$0")")"
+scriptDir="$(test -L "$0" && dirname "$(readlink -f "$0" 2> /dev/null)" || echo './')"
 leftDays="$("$scriptDir/index-cli.js" $HOST)"
 
 # echo "HOST:$HOST"
