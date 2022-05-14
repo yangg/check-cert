@@ -20,7 +20,7 @@ leftDays="$("$scriptDir/index-cli.js" $HOST)"
 # echo "HOST:$HOST"
 # echo "DAYS:$DAYS"
 # echo "curlOpts:$@"
-msg="[$(date +"%Y-%m-%dT%H:%M:%S%z")] Checking uedsky.com: Expires in $leftDays days"
+msg="[$(date +"%Y-%m-%dT%H:%M:%S%z")] Checking $HOST: Expires in $leftDays days"
 if [[ "$leftDays" -lt "$DAYS" ]]; then
     if [[ $# -gt 0 ]]; then
         curlOpts=()
