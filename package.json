@@ -6,7 +6,6 @@
     "check-cert": "cli.sh"
   },
   "scripts": {
-    "postversion": "git push && npm_config_registry=https://registry.npmjs.org/ npm publish"
   },
   "author": "Brook Yang",
   "license": "MIT",
