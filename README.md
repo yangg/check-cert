@@ -7,7 +7,7 @@ npm i -g check-cert # cli 建议 -g
 ```
 
 ## Usage
-```
+```js
 async function main() {
   const checkCert = require('./')
   const leftDays = await checkCert('uedsky.com')
@@ -17,7 +17,7 @@ main()
 ```
 
 ## Cli Usage
-```
+```bash
 check-cert <host> [--days 15] [...curlOpts]
 
 <host> 指定要检查的域名

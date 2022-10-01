@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 
 HOST="$1"
@@ -27,7 +27,7 @@ if [[ "$leftDays" -lt "$DAYS" ]]; then
         for arg in "$@"; do
             arg="${arg/\$CHECK_CERT_HOST/$HOST}"
             arg="${arg/\$CHECK_CERT_DAYS/$leftDays}"
-            curlOpts+=($arg)
+            curlOpts+=("$arg")
         done
         echo -e "\n[$(date +"%Y-%m-%dT%H:%M:%S%z")] ${curlOpts[@]}" >> /tmp/check-cert-request.log
         curl -sq "${curlOpts[@]}" >> /tmp/check-cert-request.log 2>&1
