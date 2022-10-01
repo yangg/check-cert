@@ -1,12 +1,11 @@
 {
   "name": "check-cert",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "main": "index.js",
   "bin": {
     "check-cert": "cli.sh"
   },
-  "scripts": {
-  },
+  "scripts": {},
   "author": "Brook Yang",
   "license": "MIT",
   "description": "Check https certificate valid and notify",
